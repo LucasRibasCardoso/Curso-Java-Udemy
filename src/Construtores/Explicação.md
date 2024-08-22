@@ -88,4 +88,4 @@ public class ExemploModificadores {
 
 Este exemplo ilustra como os diferentes modificadores de acesso são aplicados em uma classe Java.
 
-![image.png](Encapsulamento%20ec72bb62e9b54580a297ad7f540e7e01/image.png)
+![image.png](https://i.sstatic.net/SVk2a.png)
