@@ -1,4 +1,4 @@
-package Construtores.ExercicioFixacao;
+package Modulo01.ExercicioFixacao;
 
 import java.util.Scanner;
 

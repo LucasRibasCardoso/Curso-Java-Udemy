@@ -1,4 +1,4 @@
-package Construtores.Aula03_Encapsulamento;
+package Modulo01.Aula03_Encapsulamento;
 
 public class Usuario {
 

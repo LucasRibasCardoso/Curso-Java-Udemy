@@ -1,10 +1,11 @@
-package Construtores.Aula01_Construtores;
+package Modulo01.Aula02_SobreCarga;
+
 
 import java.util.Locale;
 import java.util.Scanner;
 
 
-public class ConstrutorTeste01 {
+public class SobreCargaTeste01 {
     public static void main(String[] args) {
 
         Locale.setDefault(Locale.US);
@@ -20,7 +21,7 @@ public class ConstrutorTeste01 {
         System.out.print("Quantity in stock: ");
         int quantity = sc.nextInt();
 
-        Product product = new Product(name, price, quantity);
+        Product product = new Product(name, price);
 
         System.out.println();
         System.out.println("Product data: " + product);
