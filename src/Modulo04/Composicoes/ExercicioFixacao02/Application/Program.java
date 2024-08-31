@@ -61,7 +61,8 @@ public class Program {
             items.add(orderItem);
         }
 
-        Order order = new Order(new Date(), orderStatus, client, items);
+        Date moment = new Date();
+        Order order = new Order(moment, orderStatus, client, items);
 
         System.out.println();
         System.out.println("ORDER SUMMARY");
