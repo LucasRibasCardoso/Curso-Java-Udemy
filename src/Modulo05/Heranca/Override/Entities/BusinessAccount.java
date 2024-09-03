@@ -1,4 +1,4 @@
-package Modulo05.Heranca.Exemplo02.Entities;
+package Modulo05.Heranca.Override.Entities;
 
 public class BusinessAccount extends Account {
     private Double loanLimit;

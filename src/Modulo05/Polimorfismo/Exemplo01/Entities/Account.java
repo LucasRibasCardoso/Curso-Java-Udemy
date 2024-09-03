@@ -1,4 +1,4 @@
-package Modulo05.Heranca.Exemplo02.Entities;
+package Modulo05.Polimorfismo.Exemplo01.Entities;
 
 public class Account {
     private Integer number;
@@ -36,7 +36,7 @@ public class Account {
 
     // saque
     public void withdraw(double amount) {
-        balance -= amount;
+        balance -= amount + 5.0;
     }
 
     // depósito
