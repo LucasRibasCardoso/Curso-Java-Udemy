@@ -1,4 +1,4 @@
-package Modulo05.Polimorfismo.ExercicioFixacao.Entities;
+package Modulo05.Polimorfismo.ExercicioFixacao01.Entities;
 
 public class Employee {
     private String name;
