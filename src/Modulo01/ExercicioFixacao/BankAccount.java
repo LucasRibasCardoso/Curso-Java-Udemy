@@ -25,7 +25,7 @@ public class BankAccount {
     public void printData() {
         System.out.println("--------------------------------------------");
         System.out.println("Accout Data");
-        System.out.print(String.format("Account %d, Holder: %s, Balance: $%s\n".
+        System.out.print(String.format("Reservation %d, Holder: %s, Balance: $%s\n".
                 formatted(this.number, this.holder, this.balance)));
         System.out.println("--------------------------------------------");
     }
