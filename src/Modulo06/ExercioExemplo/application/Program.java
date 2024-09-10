@@ -1,11 +1,10 @@
-package Modulo06.Excessoes.ExercioExemplo.application;
+package Modulo06.ExercioExemplo.application;
 
-import Modulo06.Excessoes.ExercioExemplo.models.entities.Reservation;
-import Modulo06.Excessoes.ExercioExemplo.models.exceptions.DomainException;
+import Modulo06.ExercioExemplo.models.entities.Reservation;
+import Modulo06.ExercioExemplo.models.exceptions.DomainException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 

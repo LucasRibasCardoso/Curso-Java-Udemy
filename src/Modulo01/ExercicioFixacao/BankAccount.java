@@ -62,7 +62,7 @@ public class BankAccount {
 
     // Ler valor do deposito
     public static double readDepositValue(Scanner scanner) {
-        System.out.print("Enter a deposit value: ");
+        System.out.print("Enter a withdraw value: ");
         return scanner.nextDouble();
     }
 
@@ -74,7 +74,7 @@ public class BankAccount {
 
     // Ler opção de depósito
     public static String readDepositOption(Scanner scanner) {
-        System.out.print("Is there na initial deposit (y/n)? ");
+        System.out.print("Is there na initial withdraw (y/n)? ");
         return scanner.next().toUpperCase();
     }
 }

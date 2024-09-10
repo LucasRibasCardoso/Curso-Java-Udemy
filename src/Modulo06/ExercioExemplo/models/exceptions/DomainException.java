@@ -1,4 +1,4 @@
-package Modulo06.Excessoes.ExercioExemplo.models.exceptions;
+package Modulo06.ExercioExemplo.models.exceptions;
 
 public class DomainException extends Exception {
     private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package Modulo06.Excessoes.TryCatchFinally;
+package Modulo06.TryCatchFinally;
 
 import java.io.File;
 import java.io.IOException;
