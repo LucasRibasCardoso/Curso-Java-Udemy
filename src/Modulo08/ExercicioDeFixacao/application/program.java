@@ -3,6 +3,7 @@ package Modulo08.ExercicioDeFixacao.application;
 
 import Modulo08.ExercicioDeFixacao.IOUtils.InputUtils;
 import Modulo08.ExercicioDeFixacao.models.entities.Contract;
+import Modulo08.ExercicioDeFixacao.models.entities.Installment;
 import Modulo08.ExercicioDeFixacao.models.services.ContractService;
 
 import java.time.LocalDate;
@@ -30,7 +31,10 @@ public class program {
 
         System.out.println();
         System.out.println("---INSTALLMENTS---");
-        System.out.println(contract);
+        for (Installment installment : contract.getInstallments()) {
+            System.out.println(installment);
+        }
+
 
         sc.close();
     }

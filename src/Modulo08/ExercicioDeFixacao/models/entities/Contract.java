@@ -31,17 +31,4 @@ public class Contract {
     public Double getTotalValue() {
         return totalValue;
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        for (Installment installment : getInstallments()) {
-            sb.append(installment.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            sb.append(" - ");
-            sb.append(String.format("%.2f", installment.getAmount()) + "\n");
-        }
-
-        return sb.toString();
-    }
 }
