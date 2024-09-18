@@ -31,5 +31,7 @@ public class program {
         System.out.println();
         System.out.println("---INSTALLMENTS---");
         System.out.println(contract);
+
+        sc.close();
     }
 }

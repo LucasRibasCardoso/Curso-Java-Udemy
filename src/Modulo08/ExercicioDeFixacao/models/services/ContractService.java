@@ -3,7 +3,7 @@ package Modulo08.ExercicioDeFixacao.models.services;
 
 import Modulo08.ExercicioDeFixacao.models.entities.Contract;
 import Modulo08.ExercicioDeFixacao.models.entities.Installment;
-import Modulo08.ExercicioDeFixacao.models.execeptions.InstallmentException;
+import Modulo08.ExercicioDeFixacao.models.execeptions.InstallmentTooLowException;
 import Modulo08.ExercicioDeFixacao.models.interfaces.OnlinePaymentservice;
 
 import java.time.LocalDate;
@@ -28,7 +28,7 @@ public class ContractService {
                 Installment installment = new Installment(installmentTotalValue, installmentDate);
                 installments.add(installment);
             }
-            catch (InstallmentException e) {
+            catch (InstallmentTooLowException e) {
                 System.out.println("Erro ao processar parcela: ");
 
         }

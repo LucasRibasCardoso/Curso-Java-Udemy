@@ -1,105 +1,128 @@
 package Modulo08.ExercicioDeFixacao.IOUtils;
 
-import Modulo08.ExercicioDeFixacao.models.execeptions.ContractException;
-import Modulo08.ExercicioDeFixacao.models.execeptions.InstallmentException;
+import Modulo08.ExercicioDeFixacao.models.execeptions.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputUtils {
 
-    public static int readContractNumber(Scanner sc, String message) {
+private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        while (true) {
-            System.out.print(message);
-            try {
-                return sc.nextInt();
-            }
-            catch (InputMismatchException e) {
-                System.out.println("Error: Contract number is invalid. Enter an integer value.");
-                sc.nextLine();
-            }
-        }
-    }
+    private static int getContractNumberFromUser(Scanner sc, String message) {
 
-    public static LocalDate readContractDate(Scanner sc, String message) {
-
-        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        while (true) {
-            System.out.print(message);
-            try {
-                sc.nextLine();
-                return LocalDate.parse(sc.nextLine(), pattern);
-            }
-            catch (Exception e) {
-                System.out.println("Error: Date format is invalid. Use dd/MM/yyyy.");
-            }
-        }
-    }
-
-
-
-    public static int getQuantityInstallmentsFromUser(Scanner sc, String message) {
         System.out.print(message);
         while (!sc.hasNextInt()) {
-            sc.nextLine();
-            System.out.println("Error: Quantity of installments is invalid. Enter an integer value.");
-            System.out.print(message);
+            sc.next();
+            throw new InputMismatchException("Error: Number is invalid. Enter a integer value.");
         }
         return sc.nextInt();
     }
+    private static void validateContractNumber(Integer number) {
 
-    public static void validateQuantityInstallments(int quantity) {
-        if (quantity < 1) {
-            throw new InstallmentException("Error: Quantity of installments must be greater than 1.");
+        if (number < 1000) {
+            throw new ContractNumberSizeException("Error: contract number must contain at least 4 digits");
+        }
+
+        if (number <= 0) {
+            throw new ContractNumberTooLowException("Error: contract number must be greater than 0.");
+        }
+    }
+    public static int readContractNumber(Scanner sc, String message) {
+
+        while (true) {
+            try {
+                int contractNumber = getContractNumberFromUser(sc, message);
+                validateContractNumber(contractNumber);
+                return contractNumber;
+            } catch (ContractNumberSizeException | InputMismatchException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
+
+    private static String getContractDateFromUser(Scanner sc, String message){
+        System.out.print(message);
+        return sc.next();
+    }
+    private static LocalDate validateContractDate(String date) throws DateTimeParseException {
+        try {
+            return LocalDate.parse(date, FORMATTER);
+        }
+        catch (DateTimeParseException e) {
+            throw new ContractDateInvalidFormatException("Error: Date format is invalid. Use dd/MM/yyyy.");
+        }
+    }
+    public static LocalDate readContractDate(Scanner sc, String message) {
+
+        while (true) {
+            try {
+                String contractDate = getContractDateFromUser(sc, message);
+                LocalDate validatedDate = validateContractDate(contractDate);
+                return validatedDate;
+            }
+            catch (ContractDateInvalidFormatException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+
+    private static int getQuantityInstallmentsFromUser(Scanner sc, String message) {
+
+        System.out.print(message);
+        while (!sc.hasNextInt()) {
+            sc.next();
+            throw new InputMismatchException("Error: Quantity is invalid. Enter a integer value.");
+        }
+        return sc.nextInt();
+    }
+    private static void validateQuantityInstallments(int quantity) {
+
+        if (quantity <= 0) {
+            throw new InstallmentTooLowException("Error: Quantity of installments must be greater than 0.");
+        }
+    }
     public static int readQuantityInstallments(Scanner sc, String message) {
 
-        int quantityInstallments;
         while (true) {
-            quantityInstallments = getQuantityInstallmentsFromUser(sc, message);
             try {
+                int quantityInstallments = getQuantityInstallmentsFromUser(sc, message);
                 validateQuantityInstallments(quantityInstallments);
                 return quantityInstallments;
             }
-            catch (InstallmentException e) {
-                System.out.println
-                        (e.getMessage());
+            catch (InstallmentTooLowException | InputMismatchException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
 
 
-
-    public static double getContractValueFromUser(Scanner sc, String message) {
+    private static double getContractValueFromUser(Scanner sc, String message) {
         System.out.print(message);
         while (!sc.hasNextDouble()) {
-            System.out.println("Error: Invalid input. Please enter a numeric value.");
-            sc.nextLine(); // Limpa a entrada inválida
-            System.out.print(message);
+            sc.next();
+            throw new InputMismatchException("Error: Value is invalid. Enter a double value.");
         }
         return sc.nextDouble();
     }
-
-    public static void validateContractValue(double value) throws ContractException {
-        if (value < 1) {
-            throw new ContractException("Error: Value must be greater than 1.");
+    private static void validateContractValue(double value) {
+        if (value <= 0) {
+            throw new ContractValueTooLowException("Error: Value must be greater than $0.");
         }
     }
-
     public static double readContractValue(Scanner sc, String message) {
-        double contractValue;
         while (true) {
-            contractValue = getContractValueFromUser(sc, message); // Lê o valor
             try {
-                validateContractValue(contractValue); // Valida o valor
-                return contractValue; // Se válido, retorna o valor
-            } catch (ContractException e) {
+                double contractValue = getContractValueFromUser(sc, message);
+                validateContractValue(contractValue);
+                return contractValue;
+            }
+            catch (ContractValueTooLowException | InputMismatchException e) {
                 System.out.println(e.getMessage());
             }
         }

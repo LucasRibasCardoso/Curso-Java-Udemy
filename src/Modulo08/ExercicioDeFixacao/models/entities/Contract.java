@@ -1,7 +1,5 @@
 package Modulo08.ExercicioDeFixacao.models.entities;
 
-import Modulo08.ExercicioDeFixacao.models.execeptions.ContractException;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -13,13 +11,6 @@ public class Contract {
     private List<Installment> installments;
 
     public Contract(LocalDate date, Integer number, Double totalValue) {
-        this.date = date;
-        this.number = number;
-        this.totalValue = totalValue;
-    }
-
-    public Contract(LocalDate date, List<Installment> installments, Integer number, Double totalValue) {
-        this.installments = installments;
         this.date = date;
         this.number = number;
         this.totalValue = totalValue;
