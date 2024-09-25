@@ -18,6 +18,6 @@ public class Program {
                 .map(product -> product.getName().toUpperCase())
                 .toList();
 
-        list.forEach(System.out::println);
+        names.forEach(System.out::println);
     }
 }
